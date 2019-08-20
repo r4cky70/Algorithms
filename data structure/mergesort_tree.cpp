@@ -10,7 +10,7 @@ typedef vector<int> vi;
 int n, q;
 int arr[MAXS];
 
-//This algorithms fetches for the number of values bigger than v in a given interval [i-1, i-j]
+//This algorithms fetches for the number of values bigger than v in a given interval [L, R]
 //Complexity to build = O(n log(n))
 //Complexity to search = O(log(n)^2)
 
