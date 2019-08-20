@@ -46,9 +46,9 @@ int main(){
   }
   root.build(1, 0, n-1);
   cin >> q;
-  int i, j, v;
+  int a, b, v;
   for(int i = 0; i < q; ++i){
-    cin >> i >> j >> v;
-    cout << root.query(1, 0, n-1, i-1, j-1, v) << "\n";
+    cin >> a >> b >> v;
+    cout << root.query(1, 0, n-1, a-1, b-1, v) << "\n";
   }
 }
