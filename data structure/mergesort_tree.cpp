@@ -10,7 +10,7 @@ typedef vector<int> vi;
 int n, q;
 int arr[MAXS];
 
-//This algorithms fetches for the number of values bigger than v in a given interval [i-1, i-j]
+//This algorithms fetches for the number of values bigger than v in a given interval [L, R]
 //Complexity to build = O(n log(n))
 //Complexity to search = O(log(n)^2)
 
@@ -46,9 +46,9 @@ int main(){
   }
   root.build(1, 0, n-1);
   cin >> q;
-  int i, j, v;
+  int a, b, v;
   for(int i = 0; i < q; ++i){
-    cin >> i >> j >> v;
-    cout << root.query(1, 0, n-1, i-1, j-1, v) << "\n";
+    cin >> a >> b >> v;
+    cout << root.query(1, 0, n-1, a-1, b-1, v) << "\n";
   }
 }
