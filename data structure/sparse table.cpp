@@ -10,9 +10,9 @@ int spt[MAXS][26];
 void build(){
   for(int i = 0; i < n; ++i) spt[i][0] = arr[i];
 
-  for(int i = 1; i < 26; ++i){
+  for(int i = 1; (1<<i) <= n; ++i){
     for(int j = 0; j +(1<<i) <= n; ++j){
-      spt[j][i] = max(spt[j][i-1], spt[j+(1<<i)][i-1]);
+      spt[j][i] = max(spt[j][i-1], spt[j+(1<<i-1)][i-1]);
     }
   }
 }
