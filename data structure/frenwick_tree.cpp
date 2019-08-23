@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 #define MAXS 10007
 
 int arr[MAXS];
@@ -7,13 +8,13 @@ int ftree[MAXS];
 int n;
 
 void update(int id, int v){
-  while(id<=n){
+  while(id<=MAXS){
     ftree[id] += v;
     id+=id&-id;
   }
 }
-int query(int id){
-  int acu = 0;
+ll query(int id){
+  ll acu = 0;
   while(id>0){
     acu+=ftree[id];
     id-=id&-id;
