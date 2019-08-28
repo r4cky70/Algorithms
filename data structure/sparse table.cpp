@@ -6,13 +6,13 @@ int n, q;
 int arr[MAXS];
 int spt[MAXS][26];
 
+int merge(int a, int b){return min(a, b);}
 
 void build(){
   for(int i = 0; i < n; ++i) spt[i][0] = arr[i];
-
   for(int i = 1; (1<<i) <= n; ++i){
     for(int j = 0; j +(1<<i) <= n; ++j){
-      spt[j][i] = max(spt[j][i-1], spt[j+(1<<i-1)][i-1]);
+      spt[j][i] = merge(spt[j][i-1], spt[j+(1<<i-1)][i-1]);
     }
   }
 }
@@ -20,7 +20,7 @@ void build(){
 int query(int l, int r){
   if(l > r) swap(l, r);
   int lg = __builtin_clz(1) - __builtin_clz(r-l+1);
-  return max(spt[l][lg], spt[r-(1<<lg)+1][lg]);
+  return merge(spt[l][lg], spt[r-(1<<lg)+1][lg]);
 }
 
 
