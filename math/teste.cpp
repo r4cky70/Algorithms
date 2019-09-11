@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MOD = (int)1e9 + 7;
+const int MOD = 5;
 
 long long multi(long long a, long long b){
   return (a % MOD) * (b % MOD) % MOD;
@@ -20,7 +20,13 @@ long long fe(long long a, long long b){
   if(b%2) return multi(multi(x, x), a);
   else return multi(x, x);
 }
-// a need to be divisible by b and MOD need to be a prime
+
 long long inv(long long a, long long b){
   return multi((a % MOD) , fe(b, MOD-2)%MOD);
+}
+
+int main(){
+  int a, b;
+  cin >> a >> b;
+  cout << inv(a, b) << endl;
 }
