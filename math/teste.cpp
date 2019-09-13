@@ -28,5 +28,5 @@ long long inv(long long a, long long b){
 int main(){
   int a, b;
   cin >> a >> b;
-  cout << inv(a, b) << endl;
+  cout << __gcd(a, b) << endl;
 }

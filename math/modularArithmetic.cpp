@@ -20,7 +20,7 @@ long long fe(long long a, long long b){
   if(b%2) return multi(multi(x, x), a);
   else return multi(x, x);
 }
-// a need to be divisible by b and MOD need to be a prime
+//gcd(b mod) need to be 1
 long long inv(long long a, long long b){
   return multi((a % MOD) , fe(b, MOD-2)%MOD);
-}
+} 
