@@ -37,12 +37,12 @@ matrix operator *(matrix a, matrix b) {
 	int m = (int)b.size();
 	int p = (int)b[0].size();
 	matrix c(n, vector<int>(p));
-	double col[m];
+	int col[m];
 	for (int j = 0; j < p; j++) {
 		for (int k = 0; k < m; k++)
 			col[k] = b[k][j];
 		for (int i = 0; i < n; i++) {
-			double s = 0;
+			int s = 0;
 			for (int k = 0; k < m; k++)
 				s += a[i][k] * col[k];
 			c[i][j] = s;
@@ -51,11 +51,26 @@ matrix operator *(matrix a, matrix b) {
 	return c;
 }
 
+matrix det(int n){
+  matrix c(n, vector<int>(n));
+  for(int i = 0; i < n; ++i) c[i][i] = 1;
+  return c;
+}
+
+matrix exp(matrix a, int b){
+  if(b == 0) return det(a.size());
+  matrix c = exp(a, b/2);
+  c = c*c;
+  if(b%2 != 0) c = c*a;
+  return c;
+}
+
 
 int main(){
-  matrix a = {{1, 2, 1},{2, 0, 0}};
-  matrix b = {{2, 0,}, {1, 1,}, {0, 0}};
-  matrix c = a*b;
+  //fibo recorrence
+  matrix a = {{1, 1},{1, 0}};
+  matrix b = {{0, 1}};
+  matrix c = exp(a, 3);
   for(int i = 0; i < c.size(); ++i){
     for(int j = 0; j < c[0].size(); ++j){
       cout << c[i][j] << " ";
