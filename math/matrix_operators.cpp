@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef vector<vector<int>> matrix;
+typedef vector<vector<ll>> matrix;
+typedef long long ll;
 
 matrix operator +(matrix a, matrix b){
   int n = (int)a.size();
@@ -17,7 +18,7 @@ matrix operator +(matrix a, matrix b){
   return c;
 }
 
-matrix operator *(int t, matrix a){
+matrix operator *(ll t, matrix a){
   int n = (int)a.size();
   int m = (int)a[0].size();
   for(int i = 0; i < n; ++i){
@@ -33,26 +34,26 @@ matrix operator -(matrix a, matrix b){
 }
 
 matrix operator *(matrix a, matrix b) {
-	int n = (int)a.size();
-	int m = (int)b.size();
-	int p = (int)b[0].size();
-	matrix c(n, vector<int>(p));
-	int col[m];
-	for (int j = 0; j < p; j++) {
-		for (int k = 0; k < m; k++)
-			col[k] = b[k][j];
-		for (int i = 0; i < n; i++) {
-			int s = 0;
-			for (int k = 0; k < m; k++)
-				s += a[i][k] * col[k];
-			c[i][j] = s;
-		}
-	}
-	return c;
+  int n = (int)a.size();
+  int m = (int)b.size();
+  int p = (int)b[0].size();
+  matrix c(n, vector<ll>(p));
+  ll col[m];
+  for (int j = 0; j < p; j++) {
+    for (int k = 0; k < m; k++)
+      col[k] = b[k][j];
+    for (int i = 0; i < n; i++) {
+      ll s = 0;
+      for (int k = 0; k < m; k++)
+        s += a[i][k] * col[k];
+      c[i][j] = s;
+    }
+  }
+  return c;
 }
 
 matrix det(int n){
-  matrix c(n, vector<int>(n));
+  matrix c(n, vector<ll>(n));
   for(int i = 0; i < n; ++i) c[i][i] = 1;
   return c;
 }
