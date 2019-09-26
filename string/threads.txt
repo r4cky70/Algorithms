@@ -1,3 +1,0 @@
-set print thread-events off
-run
-set confirm off
