@@ -45,9 +45,9 @@ struct hashing{
   hashing(){tam = 0;}
   hashing(string s){
     for(int j = 0; j < 2; ++j){
-      chash[j][0] = s[0]-'a'+1;
+      chash[j][0] = multi(s[0], pot[j][0], bmod[j]);
       for(int i = 1; i < s.size(); ++i){
-        chash[j][i] = adi(chash[j][i-1], multi((s[i]-'a'+'1'), pot[j][i], bmod[j]), bmod[j]);
+        chash[j][i] = adi(chash[j][i-1], multi((s[i]), pot[j][i], bmod[j]), bmod[j]);
       }
     }
     tam = s.size();
