@@ -58,9 +58,7 @@ struct hashing{
   }
 
   bool operator ==(hashing &e){
-    pair<ll, ll> temp = gethash();
-    pair<ll, ll> a = e.gethash();
-    return (temp.first == a.first && temp.second == a.second);
+    return gethash() == e.gethash();
   }
   
   pair<ll, ll> sub(int i, int j){ // [i, j]
