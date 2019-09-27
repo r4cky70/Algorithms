@@ -46,13 +46,13 @@ struct hashing{
 
   hashing(){tam = 0;}
   hashing(string s){
+    tam = s.size();
     for(int j = 0; j < 2; ++j){
       chash[j][0] = multi(s[0], pot[j][0], bmod[j]);
       for(int i = 1; i < s.size(); ++i){
         chash[j][i] = adi(chash[j][i-1], multi((s[i]), pot[j][i], bmod[j]), bmod[j]);
       }
     }
-    tam = s.size();
   }
 
   pair<ll, ll> gethash(){
