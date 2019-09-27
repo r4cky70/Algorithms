@@ -2,7 +2,7 @@
 using namespace std;
 
 typedef vector<vector<ll>> matrix;
-typedef long long ll;
+using long long ll;
 
 matrix operator +(matrix a, matrix b){
   int n = (int)a.size();
@@ -70,7 +70,7 @@ matrix exp(matrix a, int b){
 int main(){
   //fibo recorrence
   matrix a = {{1, 1},{1, 0}};
-  matrix b = {{0, 1}};
+  matrix b = {{1, 1}, {2, 2}};
   matrix c = exp(a, 3);
   for(int i = 0; i < c.size(); ++i){
     for(int j = 0; j < c[0].size(); ++j){

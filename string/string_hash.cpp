@@ -9,6 +9,7 @@ ll lmod[2] = {307, 317};
 
 ll pot[2][MAXS];
 ll inv[2][MAXS];
+ll inverso;
 
 ll adi(ll a, ll b, ll mod){
   return (a%mod + (b%mod))%mod;
@@ -29,11 +30,12 @@ ll fastexp(ll a, ll b, ll mod){
 
 void prec(){
   for(int j = 0; j < 2; ++j){
-    pot[j][0] = lmod[j];
-    inv[j][0] = fastexp(lmod[j], bmod[j]-2, bmod[j]);
+    pot[j][0] = 1;
+    inv[j][0] = 1;
+    inverso = fastexp(lmod[j], bmod[j]-2, bmod[j]);
     for(int i = 1; i < MAXS; ++i){
       pot[j][i] = multi(pot[j][i-1], lmod[j], bmod[j]);
-      inv[j][i] = multi(inv[j][i-1], inv[j][0], bmod[j]);
+      inv[j][i] = multi(inv[j][i-1], inverso, bmod[j]);
     }
   }
 }
