@@ -2,38 +2,52 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct node{
-  node *point[26];
-  bool end;
-}*head;
+struct Node{
+    Node* child[26];
+    bool endWord;
+};
 
-void init(){
-  head = new node();
-  head->end = false;  
-}
-
-void build(string s){
-  node *atual = head;
-  for(int i = 0; i < s.size(); ++i){
-    int aux = s[i]-'a';
-    if(atual->point[aux] == nullptr){
-      atual->point[aux] = new node();
+class Trie {
+    Node *head;
+public:
+    Trie() {
+        head = new Node();
     }
-    atual = atual->point[aux];
-  }
-  atual->end = true;
-}
-
-void search(string t){
-  node *atual = head;
-  for(int i = 0; i < t.size(); ++i){
-    int aux = t[i]-'a';
-    if(atual->point[aux] != nullptr){
-      atual = atual->point[aux];
+    
+    void insert(string word) {
+        Node *actual = head;
+        for(int i = 0; i < word.size(); ++i){
+            int letter = word[i] - 'a';
+            if(actual->child[letter] == nullptr){
+                actual->child[letter] = new Node();
+            }
+            actual = actual->child[letter];
+        }
+        actual->endWord = true;
     }
-  }
-}
+    
+    bool search(string word) {
+        Node *actual = head;
+        for(int i = 0; i < word.size(); ++i){
+            int letter = word[i] - 'a';
+            actual = actual->child[letter];
+            if(actual == nullptr) return false;
+        }
+        return actual->endWord;
+    }
+    
+    bool startsWith(string prefix) {
+        Node *actual = head;
+        for(int i = 0; i < prefix.size(); ++i){
+            int letter = prefix[i] - 'a';
+            actual = actual->child[letter];
+            if(actual == nullptr) return false;
+        }
+        return true;
+    }
+};
+
 
 int main(){
-  init(); 
+  Trie trie = Trie();
 }
